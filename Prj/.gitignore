@@ -1,0 +1,33 @@
+# IntelliJ / IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Build Outputs
+target/
+build/
+out/
+classes/
+
+# Gradle
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Maven Wrapper
+.mvn/wrapper/maven-wrapper.jar
+
+# Logs
+*.log
+
+# OS / Misc
+.DS_Store
+Thumbs.db
+
+# Temporary / Cache
+*.swp
+*.tmp
+
+# Node (if front-end mixed)
+node_modules/
+dist/
