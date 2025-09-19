@@ -1,6 +1,8 @@
 package com.atguigu.mybatis;
 
+import com.atguigu.mybatis.mapper.DeptMapper;
 import com.atguigu.mybatis.mapper.EmpMapper;
+import com.atguigu.mybatis.pojo.Dept;
 import com.atguigu.mybatis.pojo.Emp;
 import com.atguigu.mybatis.utils.SqlSessionUtils;
 import org.apache.ibatis.session.SqlSession;
@@ -20,13 +22,18 @@ public class ResultMapperTest {
      * a>级联属性赋值
      * b>association
      * c>分步查询
+     *
+     * 处理一对多的映射关系
+     * a>collection
+     * b>分步查询
      */
     @Test
     public void testGetEmpAndDeptByStep(){
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
         EmpMapper mapper = sqlSession.getMapper(EmpMapper.class);
         Emp emp = mapper.getEmpAndDeptByStepOne(1);
-        System.out.println(emp);
+        System.out.println(emp.getEmpName());
+        System.out.println(emp.getDept());
     }
 
     @Test
@@ -44,4 +51,21 @@ public class ResultMapperTest {
         List<Emp> list = mapper.getAllEmp();
         list.forEach(emp -> System.out.println(emp));
     }
+
+    @Test
+    public void testGetDeptAndEmp(){
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        DeptMapper mapper = sqlSession.getMapper(DeptMapper.class);
+        Dept dept = mapper.getDeptAndEmp(1);
+        System.out.println(dept);
+    }
+
+    @Test
+    public void testGetDeptAndEmpByStep(){
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        DeptMapper mapper = sqlSession.getMapper(DeptMapper.class);
+        Dept dept = mapper.getDeptAndEmpByStepOne(1);
+        System.out.println(dept.getDeptName());
+    }
+
 }

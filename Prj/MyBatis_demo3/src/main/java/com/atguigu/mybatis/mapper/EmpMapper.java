@@ -22,4 +22,6 @@ public interface EmpMapper {
 //     * 分步查询第一步：查询员工信息
 //     */
     Emp getEmpAndDeptByStepOne(@Param("eid")Integer eid);
+
+    List<Emp> getDeptAndEmpByStepTwo(@Param("did") Integer did);
 }

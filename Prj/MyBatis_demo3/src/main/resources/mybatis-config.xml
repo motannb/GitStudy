@@ -10,6 +10,9 @@
     <settings>
         <!--将_自动映射为驼峰, emp_name:empName-->
         <setting name="mapUnderscoreToCamelCase" value="True"/>
+        <!--开启延迟加载-->
+        <setting name="lazyLoadingEnabled" value="True"/>
+
     </settings>
 
     <typeAliases>

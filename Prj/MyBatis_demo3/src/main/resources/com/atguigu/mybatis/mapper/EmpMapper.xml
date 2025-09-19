@@ -68,10 +68,13 @@
         <!--
             select:设置分步查询的sql的唯一表示<namespace.sqlID或mapper接口的全类名.方法名
             column:设置分步查询的条件
+            fetchType:当开启了全局的延迟加载之后，可通过此属性手动控制延迟加载的效果
+            fetchType:"lazy|eager":lazy表示延迟加载,eager表示立即加载
         -->
         <association property="dept"
                      select="com.atguigu.mybatis.mapper.DeptMapper.getEmpAndDeptByStepTwo"
-                     column="did">
+                     column="did"
+                     fetchType="eager">
         </association>
     </resultMap>
 
@@ -83,5 +86,10 @@
     <select id="getAllEmpOld" resultType="Emp">
         select * from t_emp;
     </select>
-    
+
+    <!--List<Emp> getDeptAndEmpByStepTwo(@Param("did") Integer did);-->
+    <select id="getDeptAndEmpByStepTwo" resultType="Emp">
+        select * from t_emp where did = #{did};
+    </select>
+
 </mapper>
